@@ -1,0 +1,42 @@
+[0.448s] Invoking command in '/root/workspace_folder/src/py_trees': PYTHONPATH=/root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base /root/workspace_folder/build/py_trees_ros_tutorials build --build-base /root/workspace_folder/build/py_trees_ros_tutorials/build install --prefix /root/workspace_folder/install/py_trees_ros_tutorials --record /root/workspace_folder/build/py_trees_ros_tutorials/install.log --single-version-externally-managed
+[0.831s] running egg_info
+[0.832s] writing /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/PKG-INFO
+[0.833s] writing dependency_links to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/dependency_links.txt
+[0.833s] writing entry points to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/entry_points.txt
+[0.834s] writing top-level names to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/top_level.txt
+[1.051s] reading manifest file '/root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/SOURCES.txt'
+[1.189s] writing manifest file '/root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/SOURCES.txt'
+[1.189s] running build
+[1.190s] running build_py
+[1.220s] copying py_trees_ros_tutorials/two_battery_check.py -> /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials
+[1.391s] running install
+[1.393s] redirecting scripts
+[1.393s]   from: /root/workspace_folder/install/py_trees_ros_tutorials/bin
+[1.393s]     to: /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.393s] running install_lib
+[1.395s] copying /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials/two_battery_check.py -> /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials
+[1.397s] byte-compiling /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials/two_battery_check.py to two_battery_check.cpython-38.pyc
+[1.399s] running install_data
+[1.470s] running install_egg_info
+[1.470s] removing '/root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials-2.1.0-py3.8.egg-info' (and everything under it)
+[1.471s] Copying /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info to /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials-2.1.0-py3.8.egg-info
+[1.472s] running install_scripts
+[1.475s] Installing mock-battery script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.475s] Installing mock-dashboard script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.476s] Installing mock-dock-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.476s] Installing mock-docking-controller script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.476s] Installing mock-led-strip script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.477s] Installing mock-move-base script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.477s] Installing mock-move-base-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.478s] Installing mock-rotate-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.478s] Installing mock-rotation-controller script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.478s] Installing mock-safety-sensors script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.479s] Installing simple-tree-example script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.479s] Installing tree-action-clients script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.479s] Installing tree-battery-check script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.480s] Installing tree-context-switching script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.480s] Installing tree-data-gathering script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.480s] Installing tree-docking-cancelling-failing script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.480s] Installing tree-dynamic-application-loading script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+[1.490s] writing list of installed files to '/root/workspace_folder/build/py_trees_ros_tutorials/install.log'
+[1.515s] Invoked command in '/root/workspace_folder/src/py_trees' returned '0': PYTHONPATH=/root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base /root/workspace_folder/build/py_trees_ros_tutorials build --build-base /root/workspace_folder/build/py_trees_ros_tutorials/build install --prefix /root/workspace_folder/install/py_trees_ros_tutorials --record /root/workspace_folder/build/py_trees_ros_tutorials/install.log --single-version-externally-managed

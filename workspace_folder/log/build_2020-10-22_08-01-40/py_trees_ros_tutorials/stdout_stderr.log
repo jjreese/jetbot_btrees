@@ -1,0 +1,46 @@
+running egg_info
+writing /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/PKG-INFO
+writing dependency_links to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/dependency_links.txt
+writing entry points to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/entry_points.txt
+writing top-level names to /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/top_level.txt
+reading manifest file '/root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/SOURCES.txt'
+writing manifest file '/root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info/SOURCES.txt'
+running build
+running build_py
+copying py_trees_ros_tutorials/motor_forward.py -> /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials
+copying py_trees_ros_tutorials/motor_stop.py -> /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials
+copying py_trees_ros_tutorials/two_battery_check.py -> /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials
+running install
+redirecting scripts
+  from: /root/workspace_folder/install/py_trees_ros_tutorials/bin
+    to: /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+running install_lib
+copying /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials/motor_stop.py -> /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials
+copying /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials/two_battery_check.py -> /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials
+copying /root/workspace_folder/build/py_trees_ros_tutorials/build/lib/py_trees_ros_tutorials/motor_forward.py -> /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials
+byte-compiling /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials/motor_stop.py to motor_stop.cpython-38.pyc
+byte-compiling /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials/two_battery_check.py to two_battery_check.cpython-38.pyc
+byte-compiling /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials/motor_forward.py to motor_forward.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials-2.1.0-py3.8.egg-info' (and everything under it)
+Copying /root/workspace_folder/build/py_trees_ros_tutorials/py_trees_ros_tutorials.egg-info to /root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials-2.1.0-py3.8.egg-info
+running install_scripts
+Installing mock-battery script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-dashboard script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-dock-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-docking-controller script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-led-strip script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-move-base script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-move-base-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-rotate-client script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-rotation-controller script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing mock-safety-sensors script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing simple-tree-example script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-action-clients script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-battery-check script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-context-switching script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-data-gathering script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-docking-cancelling-failing script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+Installing tree-dynamic-application-loading script to /root/workspace_folder/install/py_trees_ros_tutorials/lib/py_trees_ros_tutorials
+writing list of installed files to '/root/workspace_folder/build/py_trees_ros_tutorials/install.log'

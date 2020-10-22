@@ -1,0 +1,5 @@
+  File "/root/workspace_folder/install/py_trees_ros_tutorials/lib/python3.8/site-packages/py_trees_ros_tutorials/two_battery_check.py", line 145
+    blackboard_variables = none"
+                               ^
+SyntaxError: EOL while scanning string literal
+
