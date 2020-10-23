@@ -86,10 +86,9 @@ import py_trees.console as console
 import rclpy
 import sys
 import sensor_msgs
-#from . import behaviours
+import operator
+from . import behaviours
 from . import mock
-from . import motor_forward
-from . import motor_stop
 
 ##############################################################################
 # Launcher
@@ -142,12 +141,15 @@ def tutorial_create_root() -> py_trees.behaviour.Behaviour:
         name="Sensor2BB",
         topic_name="tof_distance'",
         topic_type=sensor_msgs.msg.Range,
-        blackboard_variables = {'tof_distance': 'range'}
+        blackboard_variables = {'tof_distance': 'range'},
+        qos_profile = rclpy.qos.QoSProfile
     )
 
     tasks = py_trees.composites.Selector("Tasks")
 
-    obj_in_range =  py_trees.blackboard.CheckBlackboardVariableValue(
+    read_sensor = py_trees.composites.Sequence("Read Sensor")
+
+    obj_in_range =  py_trees.behaviours.CheckBlackboardVariableValue(
         name="Obj_In_Range?",
         check=py_trees.common.ComparisonExpression(
             variable="tof_distance",
@@ -157,7 +159,7 @@ def tutorial_create_root() -> py_trees.behaviour.Behaviour:
     )
 
     motor_stop = behaviours.MotorStop(
-        name = "MotorStop",
+        name = "MotorStop"
     )
 
 
@@ -170,8 +172,8 @@ def tutorial_create_root() -> py_trees.behaviour.Behaviour:
     root.add_child(topics2bb)
     topics2bb.add_child(sensor2bb)
     root.add_child(tasks)
-    tasks.add_children([obj_in_range, motor_forward])
-    obj_in_range.add_child(motor_stop)
+    tasks.add_children([read_sensor, motor_forward])
+    read_sensor.add_children([obj_in_range,motor_stop])
     return root
 
 
