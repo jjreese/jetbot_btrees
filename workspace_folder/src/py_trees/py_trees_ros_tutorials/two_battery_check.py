@@ -164,10 +164,8 @@ def tutorial_create_root() -> py_trees.behaviour.Behaviour:
 
 
     motor_forward = behaviours.MotorForward(
-          name = "MotorForward",
-          distance_away = "sensor_distance"
+          name = "MotorForward"
     )
-
 
     root.add_child(topics2bb)
     topics2bb.add_child(sensor2bb)

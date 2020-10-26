@@ -30,30 +30,13 @@ import geometry_msgs.msg as geometry_msgs
 
 
 class MotorForward(py_trees.behaviour.Behaviour):
-    """
-    This behaviour simply shoots a command off to the LEDStrip to flash
-    a certain colour and returns :attr:`~py_trees.common.Status.RUNNING`.
-    Note that this behaviour will never return with
-    :attr:`~py_trees.common.Status.SUCCESS` but will send a clearing
-    command to the LEDStrip if it is cancelled or interrupted by a higher
-    priority behaviour.
-    Publishers:
-        * **/led_strip/command** (:class:`std_msgs.msg.String`)
-          * colourised string command for the led strip ['red', 'green', 'blue']
-    Args:
-        name: name of the behaviour
-        topic_name : name of the battery state topic
-        colour: colour to flash ['red', 'green', blue']
-    """
     def __init__(
             self,
             name: str,
             topic_name: str="/motor/forward",
-            distance_away: float=0.0
     ):
         super(MotorForward, self).__init__(name=name)
         self.topic_name = topic_name
-        self.distance_away = distance_away
 
     def setup(self, **kwargs):
         """
@@ -84,17 +67,12 @@ class MotorForward(py_trees.behaviour.Behaviour):
         self.feedback_message = "publisher created"
 
     def update(self) -> py_trees.common.Status:
-        """
-        Annoy the led strip to keep firing every time it ticks over (the led strip will clear itself
-        if no command is forthcoming within a certain period of time).
-        This behaviour will only finish if it is terminated or priority interrupted from above.
-        Returns:
-            Always returns :attr:`~py_trees.common.Status.RUNNING`
-        """
         self.logger.debug("%s.update()" % self.__class__.__name__)
+        twist_msg = geometry_msgs.Twist()
+        twist_msg.linear.z = 0.75
         self.publisher.publish(geometry_msgs.Twist())
         self.publisher2.publish(std_msgs.String(data="forward"))
-        self.feedback_message = "Feedback!"
+        self.feedback_message = "Sending Forward Command"
         return py_trees.common.Status.RUNNING
 
     def terminate(self, new_status: py_trees.common.Status):
@@ -109,26 +87,12 @@ class MotorForward(py_trees.behaviour.Behaviour):
                 "{}->{}".format(self.status, new_status) if self.status != new_status else "{}".format(new_status)
             )
         )
-        self.publisher.publish(std_msgs.String(data=""))
+        self.publisher2.publish(std_msgs.String(data=""))
         self.feedback_message = "cleared"
 
 
 class MotorStop(py_trees.behaviour.Behaviour):
-    """
-    This behaviour simply shoots a command off to the LEDStrip to flash
-    a certain colour and returns :attr:`~py_trees.common.Status.RUNNING`.
-    Note that this behaviour will never return with
-    :attr:`~py_trees.common.Status.SUCCESS` but will send a clearing
-    command to the LEDStrip if it is cancelled or interrupted by a higher
-    priority behaviour.
-    Publishers:
-        * **/led_strip/command** (:class:`std_msgs.msg.String`)
-          * colourised string command for the led strip ['red', 'green', 'blue']
-    Args:
-        name: name of the behaviour
-        topic_name : name of the battery state topic
-        colour: colour to flash ['red', 'green', blue']
-    """
+
     def __init__(
             self,
             name: str,
@@ -167,13 +131,7 @@ class MotorStop(py_trees.behaviour.Behaviour):
         self.feedback_message = "publisher created"
 
     def update(self) -> py_trees.common.Status:
-        """
-        Annoy the led strip to keep firing every time it ticks over (the led strip will clear itself
-        if no command is forthcoming within a certain period of time).
-        This behaviour will only finish if it is terminated or priority interrupted from above.
-        Returns:
-            Always returns :attr:`~py_trees.common.Status.RUNNING`
-        """
+
         self.logger.debug("%s.update()" % self.__class__.__name__)
         self.publisher.publish(geometry_msgs.Twist())
         self.publisher2.publish(std_msgs.String(data="stop"))
@@ -181,18 +139,13 @@ class MotorStop(py_trees.behaviour.Behaviour):
         return py_trees.common.Status.RUNNING
 
     def terminate(self, new_status: py_trees.common.Status):
-        """
-        Shoot off a clearing command to the led strip.
-        Args:
-            new_status: the behaviour is transitioning to this new status
-        """
         self.logger.debug(
             "{}.terminate({})".format(
                 self.qualified_name,
                 "{}->{}".format(self.status, new_status) if self.status != new_status else "{}".format(new_status)
             )
         )
-        self.publisher.publish(std_msgs.String(data=""))
+        self.publisher2.publish(std_msgs.String(data=""))
         self.feedback_message = "cleared"
 
 
