@@ -139,10 +139,10 @@ def tutorial_create_root() -> py_trees.behaviour.Behaviour:
 
     sensor2bb = py_trees_ros.subscribers.ToBlackboard(
         name="Sensor2BB",
-        topic_name="tof_distance'",
+        topic_name="tof_distance",
         topic_type=sensor_msgs.msg.Range,
         blackboard_variables = {'tof_distance': 'range'},
-        qos_profile = rclpy.qos.QoSProfile
+        qos_profile = py_trees_ros.utilities.qos_profile_latched()
     )
 
     tasks = py_trees.composites.Selector("Tasks")

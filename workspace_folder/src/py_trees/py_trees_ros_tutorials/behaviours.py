@@ -20,6 +20,7 @@ import rcl_interfaces.msg as rcl_msgs
 import rcl_interfaces.srv as rcl_srvs
 import rclpy
 import std_msgs.msg as std_msgs
+import geometry_msgs.msg as geometry_msgs
 
 ##############################################################################
 # Behaviours
@@ -70,6 +71,12 @@ class MotorForward(py_trees.behaviour.Behaviour):
             raise KeyError(error_message) from e  # 'direct cause' traceability
 
         self.publisher = self.node.create_publisher(
+            msg_type=geometry_msgs.Twist,
+            topic=self.topic_name,
+            qos_profile=py_trees_ros.utilities.qos_profile_latched()
+        )
+
+        self.publisher2 = self.node.create_publisher(
             msg_type=std_msgs.String,
             topic=self.topic_name,
             qos_profile=py_trees_ros.utilities.qos_profile_latched()
@@ -85,8 +92,9 @@ class MotorForward(py_trees.behaviour.Behaviour):
             Always returns :attr:`~py_trees.common.Status.RUNNING`
         """
         self.logger.debug("%s.update()" % self.__class__.__name__)
-        self.publisher.publish(std_msgs.String(data=self.colour))
-        self.feedback_message = "flashing {0}".format(self.colour)
+        self.publisher.publish(geometry_msgs.Twist())
+        self.publisher2.publish(std_msgs.String(data="forward"))
+        self.feedback_message = "Feedback!"
         return py_trees.common.Status.RUNNING
 
     def terminate(self, new_status: py_trees.common.Status):
@@ -145,10 +153,17 @@ class MotorStop(py_trees.behaviour.Behaviour):
             raise KeyError(error_message) from e  # 'direct cause' traceability
 
         self.publisher = self.node.create_publisher(
+            msg_type=geometry_msgs.Twist,
+            topic=self.topic_name,
+            qos_profile=py_trees_ros.utilities.qos_profile_latched()
+        )
+
+        self.publisher2 = self.node.create_publisher(
             msg_type=std_msgs.String,
             topic=self.topic_name,
             qos_profile=py_trees_ros.utilities.qos_profile_latched()
         )
+
         self.feedback_message = "publisher created"
 
     def update(self) -> py_trees.common.Status:
@@ -160,8 +175,9 @@ class MotorStop(py_trees.behaviour.Behaviour):
             Always returns :attr:`~py_trees.common.Status.RUNNING`
         """
         self.logger.debug("%s.update()" % self.__class__.__name__)
-        self.publisher.publish(std_msgs.String(data=self.colour))
-        self.feedback_message = "flashing {0}".format(self.colour)
+        self.publisher.publish(geometry_msgs.Twist())
+        self.publisher2.publish(std_msgs.String(data="stop"))
+        self.feedback_message = "Feedback!"#"flashing {0}".format(self.colour)
         return py_trees.common.Status.RUNNING
 
     def terminate(self, new_status: py_trees.common.Status):
