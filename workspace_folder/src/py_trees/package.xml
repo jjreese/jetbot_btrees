@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>py_trees_ros_tutorials</name>
-  <version>2.1.0</version>
+  <name>jetbot_btrees</name>
+  <version>0.0.1</version>
   <description>
-    ROS2 extensions and behaviours for py_trees.
+    Jetbot Behavior Trees
   </description>
 
-  <maintainer email="d.stonier@gmail.com">Daniel Stonier</maintainer>
+  <maintainer email="jjreese@ncsu.edu">JJ Reese</maintainer>
 
   <license>BSD</license>
 

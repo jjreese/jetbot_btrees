@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 #
 # License: BSD
 #   https://github.com/splintered-reality/py_trees_ros_tutorials/raw/devel/LICENSE
@@ -7,22 +5,32 @@
 ##############################################################################
 # Documentation
 ##############################################################################
+
 """
-Tutorial 7 - Docking, Cancelling & Failing
+A mock robot and tutorials for py_trees on ROS2.
 """
+
 ##############################################################################
 # Imports
 ##############################################################################
 
-import py_trees_ros_tutorials.seven_docking_cancelling_failing as tutorial
+from . import behaviours
+#from . import mock
+
+
+from . import jetbot_collision
+
+#from . import one_data_gathering
+#from . import two_battery_check
+#from . import five_action_clients
+# from . import six_context_switching
+# from . import seven_docking_cancelling_failing
+# from . import eight_dynamic_application_loading
+# from . import simple_tree_example
+# from . import basic_behaviour_1
 
 ##############################################################################
-# Launch Service
+# Version
 ##############################################################################
 
-
-def generate_launch_description():
-    """
-    Launch description for the tutorial.
-    """
-    return tutorial.generate_launch_description()
+from .version import __version__

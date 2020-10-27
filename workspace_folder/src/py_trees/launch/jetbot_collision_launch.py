@@ -8,13 +8,13 @@
 # Documentation
 ##############################################################################
 """
-Tutorial 3 - Introspect the Blackboard
+Jetbot Collision Launcher
 """
 ##############################################################################
 # Imports
 ##############################################################################
 
-import py_trees_ros_tutorials.two_battery_check as tutorial
+import jetbot_btrees.jetbot_collision as jetbot_launch
 
 ##############################################################################
 # Launch Service
@@ -25,4 +25,4 @@ def generate_launch_description():
     """
     Launch description for the tutorial.
     """
-    return tutorial.generate_launch_description()
+    return jetbot_launch.generate_launch_description()

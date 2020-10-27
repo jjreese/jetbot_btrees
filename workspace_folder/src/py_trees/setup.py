@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
 
-package_name = 'py_trees_ros_tutorials'
+package_name = 'jetbot_btrees'
 
 
 # This is somewhat dodgy as it will escape any override from, e.g. the command
@@ -90,7 +90,7 @@ setup(
     install_requires=[],  # it's all lies (c.f. package.xml, but no use case for this yet)
     extras_require={},
     author='Daniel Stonier',
-    maintainer='Daniel Stonier <d.stonier@gmail.com>',
+    maintainer='JJ Reese <jjreese@ncsu.edu>',
     url='https://github.com/splintered-reality/py_trees_ros_tutorials',
     keywords=['ROS', 'ROS2', 'behaviour-trees'],
     zip_safe=True,
@@ -102,11 +102,7 @@ setup(
         'Topic :: Software Development :: Libraries'
     ],
     description=(
-        "Tutorials for py_trees on ROS2."
-    ),
-    long_description=(
-        "Tutorials demonstrating usage of py_trees in ROS and more generally,"
-        "behaviour trees for robotics."
+        "Jetbot Behavior Trees"
     ),
     license='BSD',
     # test_suite="tests"
@@ -114,25 +110,26 @@ setup(
     entry_points={
         'console_scripts': [
             # Mocks
-            'mock-battery = py_trees_ros_tutorials.mock.battery:main',
-            'mock-dashboard = py_trees_ros_tutorials.mock.dashboard:main',
-            'mock-docking-controller = py_trees_ros_tutorials.mock.dock:main',
-            'mock-led-strip = py_trees_ros_tutorials.mock.led_strip:main',
-            'mock-move-base = py_trees_ros_tutorials.mock.move_base:main',
-            'mock-rotation-controller = py_trees_ros_tutorials.mock.rotate:main',
-            'mock-safety-sensors = py_trees_ros_tutorials.mock.safety_sensors:main',
+            #'mock-battery = py_trees_ros_tutorials.mock.battery:main',
+            #'mock-dashboard = py_trees_ros_tutorials.mock.dashboard:main',
+            #'mock-docking-controller = py_trees_ros_tutorials.mock.dock:main',
+            #'mock-led-strip = py_trees_ros_tutorials.mock.led_strip:main',
+            #'mock-move-base = py_trees_ros_tutorials.mock.move_base:main',
+            #'mock-rotation-controller = py_trees_ros_tutorials.mock.rotate:main',
+            #'mock-safety-sensors = py_trees_ros_tutorials.mock.safety_sensors:main',
             # Mock Tests
-            'mock-dock-client = py_trees_ros_tutorials.mock.actions:dock_client',
-            'mock-move-base-client = py_trees_ros_tutorials.mock.actions:move_base_client',
-            'mock-rotate-client = py_trees_ros_tutorials.mock.actions:rotate_client',
+            #'mock-dock-client = py_trees_ros_tutorials.mock.actions:dock_client',
+            #'mock-move-base-client = py_trees_ros_tutorials.mock.actions:move_base_client',
+            #'mock-rotate-client = py_trees_ros_tutorials.mock.actions:rotate_client',
             # Tutorial Nodes
-            'tree-data-gathering = py_trees_ros_tutorials.one_data_gathering:tutorial_main',
-            'tree-battery-check = py_trees_ros_tutorials.two_battery_check:tutorial_main',
-            'tree-action-clients = py_trees_ros_tutorials.five_action_clients:tutorial_main',
-            'tree-context-switching = py_trees_ros_tutorials.six_context_switching:tutorial_main',
-            'tree-docking-cancelling-failing = py_trees_ros_tutorials.seven_docking_cancelling_failing:tutorial_main',
-            'tree-dynamic-application-loading = py_trees_ros_tutorials.eight_dynamic_application_loading:tutorial_main',
-            'simple-tree-example = py_trees_ros_tutorials.simple_tree_example:tutorial_main',
+            #'tree-data-gathering = py_trees_ros_tutorials.one_data_gathering:tutorial_main',
+            #'tree-battery-check = py_trees_ros_tutorials.two_battery_check:tutorial_main'
+            'jetbot_collisions = jebot_btrees.jetbot_collison.py'
+            #'tree-action-clients = py_trees_ros_tutorials.five_action_clients:tutorial_main',
+            #'tree-context-switching = py_trees_ros_tutorials.six_context_switching:tutorial_main',
+            #'tree-docking-cancelling-failing = py_trees_ros_tutorials.seven_docking_cancelling_failing:tutorial_main',
+            #'tree-dynamic-application-loading = py_trees_ros_tutorials.eight_dynamic_application_loading:tutorial_main',
+            #'simple-tree-example = py_trees_ros_tutorials.simple_tree_example:tutorial_main',
         ],
     },
 )
