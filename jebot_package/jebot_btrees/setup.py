@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'jetbot_btrees_pkg'
+package_name = 'jetbot_btrees'
 
 setup(
     name=package_name,
@@ -23,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'jetbot_collisions = jetbot_btrees_pkg.jetbot_collision:main',
+            'jetbot_collisions = jetbot_btrees.jetbot_collision:main',
         ],
     },
 )

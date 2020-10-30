@@ -87,7 +87,7 @@ def generate_launch_description():
     """
     return launch.LaunchDescription(
         launch_ros.actions.Node(
-                package='jetbot_btrees_pkg',
+                package='jetbot_btrees',
                 executable="jetbot_collision",
                 output='screen',
                 emulate_tty=True)

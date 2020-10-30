@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>jetbot_btrees_pkg</name>
+  <name>jetbot_btrees</name>
   <version>0.0.1</version>
   <description>
     Jetbot Behavior Trees
