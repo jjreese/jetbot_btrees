@@ -23,7 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'jetbot_collisions = jetbot_btrees_pkg.jetbot_collison:jetbot_btrees_main'
+            'jetbot_collisions = jetbot_btrees_pkg.jetbot_collision:main',
         ],
     },
 )

@@ -154,7 +154,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
     return root
 
 
-def jetbot_btrees_main():
+def main():
     """
     Entry point for the demo script.
     """
