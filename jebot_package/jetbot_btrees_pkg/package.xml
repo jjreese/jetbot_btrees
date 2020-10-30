@@ -15,52 +15,26 @@
   <url type="repository">https://github.com/splintered-treality/py_trees_ros_tutorials</url>
   <url type="bugtracker">https://github.com/splintered-treality/py_trees_ros_tutorials/issues</url>
 
-  <author>Daniel Stonier</author>
+  <author>JJ Reese</author>
 
-  <build_depend>python3-setuptools</build_depend>
-  <build_depend>pyqt5-dev-tools</build_depend>
-  <build_depend>qttools5-dev-tools</build_depend>
-
-  <test_depend>python3-pytest</test_depend>
 
   <!--
   <doc_depend>lots_of_things_if_we_stop_using_readthedocs</doc_depend>
   -->
 
-  <!-- mock dependencies -->
-  <exec_depend>action_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>py_trees</exec_depend>
-  <exec_depend>py_trees_ros</exec_depend>
-  <exec_depend>py_trees_ros_interfaces</exec_depend>
-  <exec_depend>python3-qt5-bindings</exec_depend>
-  <exec_depend>rcl_interfaces</exec_depend>
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+  <depend>geometry_msgs</depend>
+  <depend>py_trees</depend>
+  <depend>py_trees_ros</depend>
+  <depend>rcl_interfaces</depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
 
-  <!-- tree dependencies -->
-  <exec_depend>py_trees</exec_depend>
-  <exec_depend>py_trees_ros</exec_depend>
-  <exec_depend>py_trees_ros_interfaces</exec_depend>
-  <exec_depend>rcl_interfaces</exec_depend>
-  <exec_depend>rclpy</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
 
-  <!-- launch dependencies -->
-  <exec_depend>launch</exec_depend>
-  <exec_depend>launch_ros</exec_depend>
-  <exec_depend>ros2launch</exec_depend>
-  <exec_depend>ros2param</exec_depend>
-  <exec_depend>ros2run</exec_depend>
-  <exec_depend>ros2service</exec_depend>
-  <exec_depend>ros2topic</exec_depend>
-
-  <!-- test dependencies -->
-  <test_depend>action_msgs</test_depend>
-  <test_depend>py_trees</test_depend>
-  <test_depend>py_trees_ros</test_depend>
-  <test_depend>rclpy</test_depend>
 
   <export>
     <build_type>ament_python</build_type>
