@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>jetbot_btrees</name>
+  <version>0.0.1</version>
+  <description>
+    Jetbot Behavior Trees
+  </description>
+
+  <maintainer email="jjreese@ncsu.edu">JJ Reese</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://py-trees-ros-tutorials.readthedocs.io/en/release-2.0.x/</url>
+  <url type="repository">https://github.com/splintered-treality/py_trees_ros_tutorials</url>
+  <url type="bugtracker">https://github.com/splintered-treality/py_trees_ros_tutorials/issues</url>
+
+  <author>JJ Reese</author>
+
+
+  <!--
+  <doc_depend>lots_of_things_if_we_stop_using_readthedocs</doc_depend>
+  -->
+
+  <depend>geometry_msgs</depend>
+  <depend>py_trees</depend>
+  <depend>py_trees_ros</depend>
+  <depend>rcl_interfaces</depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+
