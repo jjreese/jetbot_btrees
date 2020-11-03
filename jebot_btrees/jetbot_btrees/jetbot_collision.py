@@ -120,27 +120,31 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         name="Sensor2BB",
         topic_name="tof_distance",
         topic_type=sensor_msgs.msg.Range,
-        blackboard_variables = {'tof_distance': 'range'},
-        qos_profile = py_trees_ros.utilities.qos_profile_latched()
-    )
+        blackboard_variables = {'sensor_dist': range},
+        qos_profile = py_trees_ros.utilities.qos_profile_latched(),
+        initialise_variables = {'sensor_dist': 0.0}
+     )
 
     tasks = py_trees.composites.Selector("Tasks")
 
-    read_sensor = py_trees.composites.Sequence("Read Sensor")
+    #read_sensor = py_trees.composites.Sequence("Read Sensor")
 
-    obj_in_range =  py_trees.behaviours.CheckBlackboardVariableValue(
-        name="Obj_In_Range?",
-        check=py_trees.common.ComparisonExpression(
-            variable="tof_distance",
-            value="15",
-            operator=operator.lt
-         )
-    )
 
     motor_stop = behaviours.MotorStop(
         name = "MotorStop"
     )
 
+
+    def check_sensor_dist(blackboard: py_trees.blackboard.Blackboard) -> bool:
+        return blackboard.sensor_dist < 15.0
+
+
+    obj_in_range =  py_trees.decorators.EternalGuard(
+        name="Obj_In_Range?",
+        condition=check_sensor_dist,
+        blackboard_keys ={"sensor_dist"},
+        child=motor_stop
+    )
 
     motor_forward = behaviours.MotorForward(
           name = "MotorForward"
@@ -149,8 +153,8 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
     root.add_child(topics2bb)
     topics2bb.add_child(sensor2bb)
     root.add_child(tasks)
-    tasks.add_children([read_sensor, motor_forward])
-    read_sensor.add_children([obj_in_range,motor_stop])
+    tasks.add_children([obj_in_range, motor_forward])
+    #read_sensor.add_children([obj_in_range,motor_stop])
     return root
 
 
