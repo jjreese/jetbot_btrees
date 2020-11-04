@@ -121,7 +121,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         topic_name="/tof_distance",
         topic_type=sensor_msgs.msg.Range,
         blackboard_variables = {'sensor_dist': 'range'},
-        qos_profile = py_trees_ros.utilities.qos_profile_latched(),
+        qos_profile = py_trees_ros.utilities.qos_profile_unlatched(),
         initialise_variables = {'sensor_dist': 0.0}
      )
 
