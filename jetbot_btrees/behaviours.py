@@ -56,19 +56,13 @@ class MotorForward(py_trees.behaviour.Behaviour):
             qos_profile=py_trees_ros.utilities.qos_profile_latched()
         )
 
-        self.publisher2 = self.node.create_publisher(
-            msg_type=std_msgs.String,
-            topic="jetbot_motor_string",
-            qos_profile=py_trees_ros.utilities.qos_profile_latched()
-        )
         self.feedback_message = "publisher created"
 
     def update(self) -> py_trees.common.Status:
         self.logger.debug("%s.update()" % self.__class__.__name__)
         twist_msg = geometry_msgs.Twist()
-        twist_msg.linear.z = 0.75
+        twist_msg.linear.x = 0.75
         self.publisher.publish(twist_msg)
-        self.publisher2.publish(std_msgs.String(data="forward"))
         self.feedback_message = "Sending Forward Command"
         return py_trees.common.Status.RUNNING
 
@@ -84,7 +78,9 @@ class MotorForward(py_trees.behaviour.Behaviour):
                 "{}->{}".format(self.status, new_status) if self.status != new_status else "{}".format(new_status)
             )
         )
-        self.publisher2.publish(std_msgs.String(data=""))
+        twist_msg = geometry_msgs.Twist()
+        twist_msg.linear.x = 0.0
+        self.publisher.publish(twist_msg)
         self.feedback_message = "cleared"
 
 
@@ -112,19 +108,14 @@ class MotorStop(py_trees.behaviour.Behaviour):
             qos_profile=py_trees_ros.utilities.qos_profile_latched()
         )
 
-        self.publisher2 = self.node.create_publisher(
-            msg_type=std_msgs.String,
-            topic="jetbot_motor_string",
-            qos_profile=py_trees_ros.utilities.qos_profile_latched()
-        )
-
         self.feedback_message = "publisher created"
 
     def update(self) -> py_trees.common.Status:
 
         self.logger.debug("%s.update()" % self.__class__.__name__)
-        self.publisher.publish(geometry_msgs.Twist())
-        self.publisher2.publish(std_msgs.String(data="stop"))
+        twist_msg = geometry_msgs.Twist()
+        twist_msg.linear.x = 0.0
+        self.publisher.publish(twist_msg)
         self.feedback_message = "Stopping Motors!"
         return py_trees.common.Status.RUNNING
 
@@ -135,7 +126,9 @@ class MotorStop(py_trees.behaviour.Behaviour):
                 "{}->{}".format(self.status, new_status) if self.status != new_status else "{}".format(new_status)
             )
         )
-        self.publisher2.publish(std_msgs.String(data=""))
+        twist_msg = geometry_msgs.Twist()
+        twist_msg.linear.x = 0.0
+        self.publisher.publish(twist_msg)
         self.feedback_message = "cleared"
 
 
