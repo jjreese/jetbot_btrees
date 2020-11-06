@@ -26,13 +26,14 @@ import geometry_msgs.msg as geometry_msgs
 # Behaviours
 ##############################################################################
 
-class MotorForward(py_trees.behaviour.Behaviour):
+
+class MotorControl(py_trees.behaviour.Behaviour):
     def __init__(
             self,
             name: str,
             topic_name: str="jetbot_motor_twist",
     ):
-        super(MotorForward, self).__init__(name=name)
+        super(MotorControl, self).__init__(name=name)
         self.topic_name = topic_name
 
     def setup(self, **kwargs):
@@ -57,13 +58,18 @@ class MotorForward(py_trees.behaviour.Behaviour):
         )
 
         self.feedback_message = "publisher created"
+        self.blackboard = py_trees.blackboard.Client(name="ControlClient")
+        self.blackboard.register_key(key="sensor_dist", access=py_trees.common.Access.READ)
+        self.p_gain = 7
+        self.max_speed = 1.0
 
     def update(self) -> py_trees.common.Status:
         self.logger.debug("%s.update()" % self.__class__.__name__)
         twist_msg = geometry_msgs.Twist()
-        twist_msg.linear.x = 0.75
+        speed = self.blackboard.sensor_dist * self.p_gain
+        twist_msg.linear.x = speed if speed < self.max_speed else self.max_speed
         self.publisher.publish(twist_msg)
-        self.feedback_message = "Sending Forward Command"
+        self.feedback_message = f"Sending Forward Command, speed: {speed if speed < self.max_speed else self.max_speed}"
         return py_trees.common.Status.RUNNING
 
     def terminate(self, new_status: py_trees.common.Status):
@@ -130,5 +136,4 @@ class MotorStop(py_trees.behaviour.Behaviour):
         twist_msg.linear.x = 0.0
         self.publisher.publish(twist_msg)
         self.feedback_message = "cleared"
-
 

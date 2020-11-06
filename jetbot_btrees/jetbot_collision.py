@@ -136,7 +136,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
 
 
     def check_sensor_dist(blackboard: py_trees.blackboard.Blackboard) -> bool:
-        return blackboard.sensor_dist < 1.0
+        return blackboard.sensor_dist < 0.05
 
 
     obj_in_range =  py_trees.decorators.EternalGuard(
@@ -146,14 +146,14 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         child=motor_stop
     )
 
-    motor_forward = behaviours.MotorForward(
-          name = "MotorForward"
+    motor_control = behaviours.MotorControl(
+          name = "MotorControl"
     )
 
     root.add_child(topics2bb)
     topics2bb.add_child(sensor2bb)
     root.add_child(tasks)
-    tasks.add_children([obj_in_range, motor_forward])
+    tasks.add_children([obj_in_range, motor_control])
     #read_sensor.add_children([obj_in_range,motor_stop])
     return root
 
@@ -182,7 +182,7 @@ def main():
         rclpy.shutdown()
         sys.exit(1)
 
-    tree.tick_tock(period_ms=1000.0)
+    tree.tick_tock(period_ms=100.0)
 
     try:
         rclpy.spin(tree.node)
