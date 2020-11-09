@@ -60,14 +60,16 @@ class MotorControl(py_trees.behaviour.Behaviour):
         self.feedback_message = "publisher created"
         self.blackboard = py_trees.blackboard.Client(name="ControlClient")
         self.blackboard.register_key(key="sensor_dist", access=py_trees.common.Access.READ)
-        self.p_gain = 7
+        self.p_gain = 2.0
         self.max_speed = 1.0
+        self.yaw_trim = 9.5
 
     def update(self) -> py_trees.common.Status:
         self.logger.debug("%s.update()" % self.__class__.__name__)
         twist_msg = geometry_msgs.Twist()
         speed = self.blackboard.sensor_dist * self.p_gain
         twist_msg.linear.x = speed if speed < self.max_speed else self.max_speed
+        twist_msg.angular.z = self.yaw_trim
         self.publisher.publish(twist_msg)
         self.feedback_message = f"Sending Forward Command, speed: {speed if speed < self.max_speed else self.max_speed}"
         return py_trees.common.Status.RUNNING
@@ -86,6 +88,7 @@ class MotorControl(py_trees.behaviour.Behaviour):
         )
         twist_msg = geometry_msgs.Twist()
         twist_msg.linear.x = 0.0
+        twist_msg.angular.z = 0.0
         self.publisher.publish(twist_msg)
         self.feedback_message = "cleared"
 
@@ -136,4 +139,35 @@ class MotorStop(py_trees.behaviour.Behaviour):
         twist_msg.linear.x = 0.0
         self.publisher.publish(twist_msg)
         self.feedback_message = "cleared"
+
+class TickLimit(py_trees.decorators.Decorator):
+    def __init__(self,
+                 child: py_trees.behaviour.Behaviour,
+                 name: str=py_trees.common.Name.AUTO_GENERATED,
+                 max_ticks: int=5):
+        super(TickLimit, self).__init__(name=name, child=child)
+        self.max_ticks = max_ticks
+        self.tick_count = 0
+        self.blackboard = py_trees.blackboard.Client(name="TickClient")
+        self.blackboard.register_key(key="sensor_dist", access=py_trees.common.Access.WRITE)
+
+    def initialize(self):
+        self.tick_count = 0
+    
+    def update(self):
+        if (self.decorated.status == py_trees.common.Status.RUNNING):
+            self.tick_count += 1
+            self.feedback_message = f"Child running, tick count: {self.tick_count}"
+            if (self.tick_count >= self.max_ticks):
+                self.tick_count = 0
+                self.feedback_message = "Max ticks hit"
+#                self.decorated.stop(py_trees.common.Status.INVALID)
+                self.blackboard.sensor_dist = 0.0
+                return py_trees.common.Status.FAILURE
+        else:
+            self.tick_count = 0
+            self.feedback_message = "Child finished before tick limit hit"
+        return self.decorated.status
+
+
 

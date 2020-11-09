@@ -88,7 +88,7 @@ def generate_launch_description():
     return launch.LaunchDescription(
         launch_ros.actions.Node(
                 package='jetbot_btrees',
-                executable="jetbot_collision",
+                executable="basic_controller",
                 output='screen',
                 emulate_tty=True)
        )
@@ -136,7 +136,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
 
 
     def check_sensor_dist(blackboard: py_trees.blackboard.Blackboard) -> bool:
-        return blackboard.sensor_dist < 0.05
+        return blackboard.sensor_dist < 0.15
 
 
     obj_in_range =  py_trees.decorators.EternalGuard(
@@ -182,7 +182,7 @@ def main():
         rclpy.shutdown()
         sys.exit(1)
 
-    tree.tick_tock(period_ms=100.0)
+    tree.tick_tock(period_ms=50.0)
 
     try:
         rclpy.spin(tree.node)
