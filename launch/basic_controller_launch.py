@@ -14,7 +14,7 @@ Jetbot Collision Launcher
 # Imports
 ##############################################################################
 
-import jetbot_btrees.jetbot_collision as jetbot_launch
+import jetbot_btrees.basic_controller as basic_controller
 
 ##############################################################################
 # Launch Service
