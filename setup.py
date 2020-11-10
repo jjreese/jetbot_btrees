@@ -23,6 +23,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'basic_tree = jetbot_btrees.basic_tree:main',
             'basic_controller = jetbot_btrees.basic_controller:main',
             'timeout_controller = jetbot_btrees.timeout_controller:main',
         ],

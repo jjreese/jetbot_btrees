@@ -108,7 +108,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         the root of the tree
     """
     root = py_trees.composites.Parallel(
-        name="Jetbot Object Avoidance",
+        name="Proportional Controller Tree",
         policy=py_trees.common.ParallelPolicy.SuccessOnAll(
             synchronise=False
         )

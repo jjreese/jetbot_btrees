@@ -88,7 +88,7 @@ def generate_launch_description():
     return launch.LaunchDescription(
         launch_ros.actions.Node(
                 package='jetbot_btrees',
-                executable="timeout_controller",
+                executable="jetbot_collision",
                 output='screen',
                 emulate_tty=True)
        )
@@ -108,7 +108,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         the root of the tree
     """
     root = py_trees.composites.Parallel(
-        name="Timeout Controller Tree",
+        name="Basic Behaviour Tree",
         policy=py_trees.common.ParallelPolicy.SuccessOnAll(
             synchronise=False
         )
@@ -136,7 +136,7 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
 
 
     def check_sensor_dist(blackboard: py_trees.blackboard.Blackboard) -> bool:
-        return blackboard.sensor_dist < 0.15
+        return blackboard.sensor_dist < 1.0
 
 
     obj_in_range =  py_trees.decorators.EternalGuard(
@@ -146,20 +146,14 @@ def jetbot_create_root() -> py_trees.behaviour.Behaviour:
         child=motor_stop
     )
 
-    motor_control = behaviours.MotorControl(
-          name = "MotorControl"
+    motor_forward = behaviours.MotorForward(
+          name = "MotorForward"
     )
 
-    tick_limit = behaviours.TickLimit(
-        child=sensor2bb,
-        name="TickLimit",
-        max_ticks=10)
-
-#    root.add_child(topics2bb)
-#    topics2bb.add_child(sensor2bb)
-    root.add_child(tick_limit)
+    root.add_child(topics2bb)
+    topics2bb.add_child(sensor2bb)
     root.add_child(tasks)
-    tasks.add_children([obj_in_range, motor_control])
+    tasks.add_children([obj_in_range, motor_forward])
     #read_sensor.add_children([obj_in_range,motor_stop])
     return root
 
@@ -188,7 +182,7 @@ def main():
         rclpy.shutdown()
         sys.exit(1)
 
-    tree.tick_tock(period_ms=50.0)
+    tree.tick_tock(period_ms=1000.0)
 
     try:
         rclpy.spin(tree.node)
